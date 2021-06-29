@@ -111,11 +111,11 @@ az mysql server configuration set --name wait_timeout \
 
 az mysql server configuration set --name slow_query_log \
  --resource-group ${resource_group} \
- --server ${mysql_server_name} --value "ON"
+ --server ${mysql_server_name} --value ON
 
 az mysql server configuration set --name audit_log_enabled \
  --resource-group ${resource_group} \
- --server ${mysql_server_name} --value "ON"
+ --server ${mysql_server_name} --value ON
 
 az mysql server configuration set --name audit_log_events \
  --resource-group ${resource_group} \
@@ -123,11 +123,11 @@ az mysql server configuration set --name audit_log_events \
 
 az mysql server configuration set --name log_queries_not_using_indexes \
  --resource-group ${resource_group} \
- --server ${mysql_server_name} --value "ON"
+ --server ${mysql_server_name} --value ON
 
 az mysql server configuration set --name long_query_time \
  --resource-group ${resource_group} \
- --server ${mysql_server_name} --value "1"
+ --server ${mysql_server_name} --value 1
 
 #mysql Configuration 
 mysql -h"${mysql_server_full_name}" -u"${mysql_server_admin_login_name}" \
@@ -144,7 +144,11 @@ az mysql server configuration set --name time_zone \
 
 az mysql server configuration set --name query_store_capture_mode \
   --resource-group ${resource_group} \
-  --server ${mysql_server_name} --value "ALL"
+  --server ${mysql_server_name} --value ALL
+
+az mysql server configuration set --name query_store_capture_interval \
+  --resource-group ${resource_group} \
+  --server ${mysql_server_name} --value 5
 
 echo "\nDeploying the Apps to the Spring Cloud"
 
