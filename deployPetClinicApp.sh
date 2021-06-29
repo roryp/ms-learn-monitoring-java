@@ -225,6 +225,40 @@ az monitor diagnostic-settings create --name "send-logs-and-metrics-to-log-analy
          }
        ]'
 
+export MYSQL_RESOURCE_ID=$(az mysql server show --name ${spring_cloud_service} --resource-group ${resource_group} | jq -r '.id')
+
+az monitor diagnostic-settings create --name "send-mysql-logs-and-metrics-to-log-analytics" \
+    --resource ${MYSQL_RESOURCE_ID} \
+    --workspace ${LOG_ANALYTICS_RESOURCE_ID} \
+    --logs '[
+         {
+           "category": "MySQLAuditLogs",
+           "enabled": true,
+           "retentionPolicy": {
+             "enabled": false,
+             "days": 0
+           }
+         },
+         {
+            "category": "MySQLSlowLogs",
+            "enabled": true,
+            "retentionPolicy": {
+              "enabled": false,
+              "days": 0
+            }
+          }        
+       ]' \
+       --metrics '[
+         {
+           "category": "AllMetrics",
+           "enabled": true,
+           "retentionPolicy": {
+             "enabled": false,
+             "days": 0
+           }
+         }
+       ]'
+
 export GATEWAY_URL=$(az spring-cloud app show --name ${api_gateway} | jq -r '.properties.url')
 
 echo "\nTesting the deployed services at ${GATEWAY_URL}"
