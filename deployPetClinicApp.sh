@@ -127,7 +127,7 @@ az mysql server configuration set --name log_queries_not_using_indexes \
 
 az mysql server configuration set --name long_query_time \
  --resource-group ${resource_group} \
- --server ${mysql_server_name} --value 1
+ --server ${mysql_server_name} --value 0
 
 #mysql Configuration 
 mysql -h"${mysql_server_full_name}" -u"${mysql_server_admin_login_name}" \
