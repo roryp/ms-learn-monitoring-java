@@ -2,13 +2,13 @@
 
 # ==== Must Cusomize the below for your environment====
 project_directory=$HOME
-resource_group='springcloudrpza'
+resource_group='your_resource_group_name'
 region='westeurope'
-spring_cloud_service='springcloudrpza'
-mysql_server_name='springcloudrpza'
-mysql_server_admin_name='adminrpza'
-mysql_server_admin_password='@zureIsTheDevil01'
-log_analytics='springcloudrpza'
+spring_cloud_service='your_azure_spring_cloud_name'
+mysql_server_name='your_sql_server_name'
+mysql_server_admin_name='your_sql_server_admin_name'
+mysql_server_admin_password='your_password'
+log_analytics='your_analytics_name'
 
 #Add Required extensions
 az extension add --name spring-cloud
