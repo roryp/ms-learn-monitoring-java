@@ -232,7 +232,7 @@ az monitor diagnostic-settings create --name "send-mysql-logs-and-metrics-to-log
     --workspace ${LOG_ANALYTICS_RESOURCE_ID} \
     --logs '[
          {
-           "category": "MySQLAuditLogs",
+           "category": "MySqlAuditLogs",
            "enabled": true,
            "retentionPolicy": {
              "enabled": false,
@@ -240,7 +240,7 @@ az monitor diagnostic-settings create --name "send-mysql-logs-and-metrics-to-log
            }
          },
          {
-            "category": "MySQLSlowLogs",
+            "category": "MySqlSlowLogs",
             "enabled": true,
             "retentionPolicy": {
               "enabled": false,
