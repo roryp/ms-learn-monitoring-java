@@ -191,7 +191,7 @@ export LOG_ANALYTICS_RESOURCE_ID=$(az monitor log-analytics workspace show \
     --resource-group ${resource_group} \
     --workspace-name ${log_analytics} | jq -r '.id')
 
-export WEBAPP_RESOURCE_ID=$(az spring-cloud show --name ${spring_cloud_service} --resource-group ${resource_group} | jq -r '.id')
+export WEBAPP_RESOURCE_ID=$(az spring-cloud show --name ${mysql_server_name} --resource-group ${resource_group} | jq -r '.id')
 
 az monitor diagnostic-settings create --name "send-logs-and-metrics-to-log-analytics" \
     --resource ${WEBAPP_RESOURCE_ID} \
